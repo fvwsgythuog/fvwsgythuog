@@ -1,0 +1,83 @@
+mounted() {	
+		this.$nextTick(() => {
+			// 监控屏幕尺寸变化
+			var bodyStyle = document.createElement("style");
+			// 这里根据具体的设计稿尺寸来定
+			bodyStyle.innerHTML = `body{width:1920px; height:1080px!important;}`;
+			document.documentElement.firstElementChild.appendChild(bodyStyle);
+			this.screenWidth = document.body.clientWidth;
+			this.screenHeight = document.body.clientHeight;
+			window.onresize = () => {
+				return (() => {
+					this.screenWidth = document.documentElement.clientWidth;
+					this.screenHeight = document.documentElement.clientHeight;
+				})();
+			};
+			document.addEventListener("keydown", (e) => {
+				if (e.code == "F11") {
+					this.screenWidth = document.documentElement.clientWidth;
+					this.screenHeight = document.documentElement.clientHeight;
+				}
+			});
+		});
+	},
+watch: {
+		screenWidth: {
+			handler: function () {
+				// console.log("val", val);
+				let docWidth = document.documentElement.clientWidth;
+				let docHeight = document.documentElement.clientHeight;
+				var designWidth = 1920, // 这里根据具体的设计稿尺寸来定
+					designHeight = 1080, // 这里根据具体的设计稿尺寸来定
+					widthRatio = docWidth / designWidth,
+					heightRatio = docHeight / designHeight;
+				document.body.style = `transform:scale(${widthRatio},${heightRatio});transform-origin:left top;overflow: hidden;`;
+				// 应对浏览器全屏切换前后窗口因短暂滚动条问题出现未占满情况
+				setTimeout(function () {
+					var lateWidth = document.documentElement.clientWidth,
+						lateHeight = document.documentElement.clientHeight;
+					if (lateWidth === docWidth) return;
+ 
+					widthRatio = lateWidth / designWidth;
+					heightRatio = lateHeight / designHeight;
+					document.body.style =
+						"transform:scale(" +
+						widthRatio +
+						"," +
+						heightRatio +
+						");transform-origin:left top;overflow: hidden;";
+				}, 0);
+			},
+			immediate: true,
+			deep: true,
+		},
+		screenHeight: {
+			handler: function () {
+				// console.log("val", val);
+				let docWidth = document.documentElement.clientWidth;
+				let docHeight = document.documentElement.clientHeight;
+				var designWidth = 1920, // 这里根据具体的设计稿尺寸来定
+					designHeight = 1080, // 这里根据具体的设计稿尺寸来定
+					widthRatio = docWidth / designWidth,
+					heightRatio = docHeight / designHeight;
+				document.body.style = `transform:scale(${widthRatio},${heightRatio});transform-origin:left top;overflow: hidden;`;
+				// 应对浏览器全屏切换前后窗口因短暂滚动条问题出现未占满情况
+				setTimeout(function () {
+					var lateWidth = document.documentElement.clientWidth,
+						lateHeight = document.documentElement.clientHeight;
+					if (lateWidth === docWidth) return;
+ 
+					widthRatio = lateWidth / designWidth;
+					heightRatio = lateHeight / designHeight;
+					document.body.style =
+						"transform:scale(" +
+						widthRatio +
+						"," +
+						heightRatio +
+						");transform-origin:left top;overflow: hidden;";
+				}, 0);
+			},
+			immediate: true,
+			deep: true,
+		},
+	},
