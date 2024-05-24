@@ -1,0 +1,9 @@
+<el-button  size="mini" @click="handleExport(scope.row)">导出</el-button>
+//method方法：
+handleExport(row) {
+      var elemIF = document.createElement('iframe')
+      elemIF.src = 'user/downloadExcel?snapshotTime=' + formatDate(new Date(row.snapshotTime), 'yyyy-MM-dd hh:mm') +
+                    '&category=' + row.category 
+      elemIF.style.display = 'none'
+      document.body.appendChild(elemIF)
+    }
