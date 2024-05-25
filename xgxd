@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>案例</title>
+    <style>
+        div {
+            width: 300px;
+            height: 100px;
+            /* 使用margin属性让文字左右居中 */
+            text-align: center;
+            margin-bottom: 10px;
+            background-color: #D5E8D4;
+            /* 使用行高让文字上下居中 */
+            line-height: 100px;
+        }
+        .box2{
+          display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>盒子1</div>
+    <div class="box2">盒子2</div>
+    <div>盒子3</div>
+</body>
+
+</html>
