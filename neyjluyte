@@ -1,0 +1,16 @@
+                    const maxWidth = 800; // 设置最大宽度为800像素
+                    let width = img.width;
+                    let height = img.height;
+ 
+                    // 判断是否需要缩放
+                    if (width > maxWidth) {
+                        height *= maxWidth / width;
+                        width = maxWidth;
+                    }
+ 
+                    // 设置 canvas 的宽高
+                    canvas.width = width;
+                    canvas.height = height;
+ 
+                    // 将图片绘制到 canvas 上
+                    ctx.drawImage(img, 0, 0, width, height);
