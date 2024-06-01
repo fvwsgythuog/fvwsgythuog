@@ -1,0 +1,54 @@
+#include <QtSerialPort/qserialport.h>
+#include <QtSerialPort/qserialportinfo.h>
+ 
+using namespace QtCharts;
+ 
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    chart = new QChart();
+	series = new QSplineSeries();
+	chartview = new QChartView();
+ 
+	//设置图标标题
+	chart->setTitle("平均料位");
+ 
+	//曲线属性
+	series->setName(tr("Device 1"));
+	series->setColor(Qt::red);
+	series->setPen(QPen(Qt::red, 2));
+	chart->addSeries(series);
+	
+ 
+	//设置X轴属性
+	QValueAxis *axisX = new QValueAxis;
+	chart->addAxis(axisX, Qt::AlignBottom);
+	//axisX->setTickCount(5);
+	axisX->setRange(0, 30);
+	axisX->setTitleText("Time(s)");
+	series->attachAxis(axisX);
+ 
+	//设置Y轴属性
+	QValueAxis *axisY = new QValueAxis;
+	chart->addAxis(axisY, Qt::AlignLeft);
+	axisY->setRange(0, 90);
+	axisY->setTitleText("料位");
+	series->attachAxis(axisY);
+ 
+    Timeout_handler();
+ 
+	//将图标添加到chartview中
+	ui->widget->setChart(chart);
+}
+ 
+void MainWindow::Timeout_handler()
+{
+	QList<double> data = { 1.2,2.5,5.0,8.3,11.9,13.9,22.9,28.9 };
+	QList<double> data1 = { 12.76, 45.8,64.9,11.9,36.5,74.9,23.9,55.4 };
+	for (int i = 0; i < data.size(); i++)
+	{
+		series->append(data.at(i), data1.at(i));
+	}
+}
