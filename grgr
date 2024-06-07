@@ -1,0 +1,27 @@
+<div class="site-list">
+					<ul class="clearfix">
+						<li>
+							<a href="index1.html"><font color="coral"><b>首页</b></font></a>
+						</li>
+						<li>
+							<a href="dianying2.html">鲜花</a>
+						</li>
+						<li>
+							<a href="dianshij2.html">永生花</a>
+						</li>
+						<li>
+							<a href="#">在线订购</a>
+						</li>
+				<!-- tab下拉菜单 -->
+						<li class="qita">
+							<a href="#">其他</a>
+							<ul class="dis">
+								<li><a href="dianying2.html">礼品</a></li>
+								<li><a href="#">公仔</a></li>
+								<li><a href="#">绿植</a></li>
+								<li><a href="#">团购</a></li>
+                                                                                   <li><a href="#">甄选</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
