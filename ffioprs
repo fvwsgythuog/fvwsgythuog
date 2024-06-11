@@ -1,0 +1,17 @@
+    @Autowired
+    private ApplicationContext applicationContext;
+ 
+    @Test
+    public void test2(){
+        //根据name来获取bean对象
+        Student student1 = (Student) applicationContext.getBean("student");
+        System.out.println(student1);
+ 
+        //根据类型来获取bean对象
+        Student student2 = applicationContext.getBean(Student.class);
+        System.out.println(student2);
+ 
+        //根据name和类型来获取bean对象
+        Student student3 = applicationContext.getBean("student",Student.class);
+        System.out.println(student3);
+    }
