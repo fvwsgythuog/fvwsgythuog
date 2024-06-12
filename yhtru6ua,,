@@ -1,0 +1,6 @@
+string rv=checkSchemaServerValid(x1.Text,x1.Attributes["checkSchema"],"身份证号");
+if(rv!=""){
+    Response.Write(rv);
+}else{
+    Response.Write("校验通过");
+}
