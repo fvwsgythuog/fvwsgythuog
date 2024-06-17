@@ -1,0 +1,27 @@
+ <!--pages/myCenter/index.wxml-->
+<!-- 头部背景 收益容器 -->
+<view class="center-Top">
+  <view class="center-TopBack">
+    <view class="userInfo-box">
+      <view class="leftInfo">
+        <view class="cnter-user">
+          <image  src="{{imgUrl}}/upload/20220608/noUser.png" class="cnter-user" lazy-load="true">
+          </image>
+        </view>
+        <view class="userNameBox">
+          <view class="uNameText">
+            <!-- <open-data  type="userNickName"></open-data> -->
+            <!-- <view wx:else bindtap="login">注册/登录</view> -->
+            <view >
+              <text>摔跤猫子</text>
+              <!-- <button class="kefu-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo"
+                style="width:100%"></button> -->
+                <button  class="kefu-btn" style="width:100%"></button>
+            </view>
+          </view>
+          <view class="shop">
+            <text>用户</text>
+          </view>
+        </view>
+      </view>
+    </view>
